@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+
+    <!-- Header starts -->
+    
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Currency Converter App</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+                </li> -->
+                <li class="nav-item">
+                  <a class="nav-link" href="converter.html">Conversion Rates</a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Disabled</a>
+                </li> -->
+              </ul>
+            </div>
+          </nav>
+        
+        <!-- form strats -->
+
+        <div class="container pt-5">
+            <center>
+                <h2><b>Welcome Orchy!</b></h2>
+            </center>
+        </div>
+
+        <!-- First row starts -->
+        <div class="container pt-5" style="background-color: burlywood; padding:30px; border-radius: 10px;">
+            <div class="row pt-5" style="background-color: gray; padding:20px; border-radius: 10px;">
+                <!-- amount start -->
+                    <div class="col-1">
+                        <label style="margin-right: 10px;" for="amount">Amount</label>
+                    </div>
+                    <div class="col-2">
+                        <input class="form-control" type="number" id="amount">
+                    </div>
+                <!-- amount ends -->
+    
+                <!-- From starts -->
+                    <div class="col-1">
+                        <label style="margin-right: 20px;" for="from">From</label>
+                    </div>
+                    <div class="col-2">
+                        <select class="form-control" style="width: 60%;" name="from" id="from">
+                            <option selected disabled value="usd">Select...</option>
+                            <option value="USD">USD</option>
+                            <option value="RS">Rs</option>
+                            <option value="BDT">BDT</option>
+                        </select>
+                    </div>
+                <!-- From ends -->
+    
+                <!-- To starts -->
+                <div class="col-1">
+                    <center>
+                        <label style="margin-right: 20px;" for="To">To</label>
+                    </center>
+                </div>
+                <div class="col-2">
+                    <select class="form-control" style="width: 60%;" name="to" id="to">
+                        <option selected disabled value="usd">Select...</option>
+                        <option value="USD">USD</option>
+                        <option value="RS">Rs</option>
+                        <option value="BDT">BDT</option>
+                    </select>
+                </div>
+                <!-- To ends -->
+    
+                <!-- Button starts -->
+                <div class="col-3">
+                    <center><button type="button" class="btn btn-primary" onclick="convert()">Convert</button></center>
+                </div>
+                <!-- Button Ends -->
+    
+            </div>
+            <!-- first row ends -->
+            <div class="row pt-5" style="background-color: lightblue; padding:20px; border-radius: 10px;">
+                <div class="col-3">
+                    <label for="amount">Your Converted Amount is : </label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control" type="text" id="output">
+                </div>
+            </div>
+            <!-- Form ends -->
+        </div>
+        
+    </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script>
+        // alert("Hello World");
+        function convert(){
+            var am = document.getElementById("amount").value;
+            var fr = document.getElementById("from").value;
+            var t = document.getElementById("to").value;
+            // alert(am + " " + fr+ " " +t);
+            var result = t ;
+
+            if(fr == "USD"){
+                if(t == "BDT"){
+                    result = result + " " +am*97;
+                    document.getElementById("output").value = result;
+                }
+                else
+                result = result + " " +am*78.18;
+                document.getElementById("output").value = result;
+            }
+            else if(fr == "BDT"){
+                if(t == "USD"){
+                    result = result + " " +am/97;
+                    document.getElementById("output").value = result;
+                }
+                else
+                    result = result + " " +am*0.84;
+                    document.getElementById("output").value = result;
+            }
+            else{
+                if(t == "USD"){
+                    result = result + " " +am/78.18;
+                    document.getElementById("output").value = result;
+                }
+                else
+                    result = result + " " +am/0.84;
+                    document.getElementById("output").value = result;
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
